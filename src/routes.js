@@ -9,6 +9,7 @@ import ScrollToTop from './components/ScrollTop'
 import Home from './components/Home'
 import Penal from './components/Penal'
 import Causas from './components/actuaciones/Causas'
+import Causasprueba from './components/buttons/CausasPruebas/Causasprueba'
 
 export default props => (
     <HashRouter>
@@ -20,7 +21,7 @@ export default props => (
           <Route exact path='/signup' component={ Signup } />
           <Route exact path='/wizard' component={ Wizard } />
           <Route exact path='/cards' component={ Cards } />
-          <Route exact path='/causas' component={ Causas } />
+          <Route exact path='/causas' component={ Causasprueba } />
         </Switch>
       </ScrollToTop>
     </HashRouter>

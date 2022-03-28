@@ -49,6 +49,8 @@ const ChartCausasCircunscripcionTrimestres2020 = (props) => {
     const [chartInstance, setChartInstance] = useState(null);
     
     var newChartInstance=null;
+    //newChartInstance = new Chart(chartContainer.current, chartConfig);      
+    //setChartInstance(newChartInstance);
 
     const MostrarGrafico = () => {
 
@@ -66,14 +68,15 @@ const ChartCausasCircunscripcionTrimestres2020 = (props) => {
         {
             alert('nueva');
             //newChartInstance.destroy();
-            newChartInstance = new Chart(chartContainer.current, chartConfig);      
-            setChartInstance(newChartInstance);
+            
         }
         else
         {
             alert('entra');
            // newChartInstance.destroy();
-            setChartInstance(newChartInstance);
+            //setChartInstance(newChartInstance);
+
+           // newChartInstance.instances[4].update()
         }
       
        

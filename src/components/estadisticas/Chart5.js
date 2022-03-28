@@ -1,28 +1,23 @@
 import { Chart } from 'chart.js';
 import React, { useEffect, useRef, useState } from 'react';
+import { Button } from '@material-ui/core';
 
 
 
 const Chart5 = () => {
 
-
-
- //var labels = JSON.parse(props.labels);
-  //data.labels=labels;
- //var datos = props.datos;
-  //data.data=datos;
-  //chartConfig.data=data;
-
 //var labels = [65, 59, 80];
 var labels = ['2019 1 Trimestre', '2019 2 Trimestre', '2019 3 Trimestre', '2019 4 Trimestre', '2019 Total', '2020 1 Trimestre', '2020 2 Trimestre', '2020 3 Trimestre', '2020 4 Trimestre', '2020 Total', '2021 1 Trimestre', '2021 2 Trimestre', '2021 3 Trimestre', '2021 4 Trimestre', '2021 Total'];
+var labels2 = ['2019 111 Trimestre', '2019 2 Trimestre', '2019 3 Trimestre', '2019 4 Trimestre', '2019 Total', '2020 1 Trimestre', '2020 2 Trimestre', '2020 3 Trimestre', '2020 4 Trimestre', '2020 Total', '2021 1 Trimestre', '2021 2 Trimestre', '2021 3 Trimestre', '2021 4 Trimestre', '2021 Total'];
 
 var datos = [138, 168, 101, 121, 528, 46, 53, 166, 122, 387, 46, 134, 176, 198, 610];
 var datos1 = [50, 50, 50, 50, 50, 50, 50, 166, 122, 387, 46, 134, 176, 198, 610];
 
+const [datosx, setDatosx] = useState(datos);
 
-//datos = props.datos;
+useEffect(() => { 
 
-//console.log(datos);
+}, [datosx]);
 
 
 
@@ -31,7 +26,7 @@ var data = {
   datasets: [{
     axis: 'y',
     label: 'My First Dataset',
-    data: datos,
+    data: datosx,
     fill: false,
     backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
@@ -55,7 +50,7 @@ var data = {
   },{
     axis: 'y',
     label: 'My First Dataset1',
-    data: datos1,
+    data: datosx,
     fill: false,
     backgroundColor: [
       'rgba(255, 99, 0, 0.2)',
@@ -95,25 +90,40 @@ var chartConfig = {
 
   
 
-  const chartContainer = useRef(null);
+  var chartContainer = useRef(null);
   const [chartInstance, setChartInstance] = useState(null);
 
-
+  var newChartInstance = null;
   const MostrarGrafico = () => {
-    const newChartInstance = new Chart(chartContainer.current, chartConfig);
-    setChartInstance(newChartInstance);
+ 
+  newChartInstance = new Chart(chartContainer.current, chartConfig);
+  setChartInstance(newChartInstance);
+
+  console.log(datosx);
+  
+
   };
   
 
-  useEffect(() => {
-
-    MostrarGrafico();
-  
-  }, []);
 
   return (
     <div>
+      
       <canvas ref={chartContainer} />
+
+      <canvas id="myChart" width="500" height="500"></canvas>
+     
+
+      <Button onClick={() => {  
+        
+        setDatosx(datos1);
+        var ctx = document.getElementById('myChart').getContext('2d');
+        
+        console.log(datosx,ctx);
+                      
+
+                    }}>ver</Button>
+
     </div>
   );
 };
